@@ -13,5 +13,6 @@ class ActionServiceProvider extends ServiceProvider
         ClientService\Contracts\GetAllCategories::class => ClientService\Actions\Category\GetCategoryAction::class,
         ClientService\Contracts\GetAllGenres::class => ClientService\Actions\Genre\GetGenreAction::class,
         ClientService\Contracts\GetGamesByGenre::class => ClientService\Actions\Game\GetByGenreAction::class,
+        ClientService\Contracts\GetAllBanners::class => ClientService\Actions\Banner\GetAllAction::class,
     ];
 }

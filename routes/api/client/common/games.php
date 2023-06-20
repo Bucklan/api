@@ -1,0 +1,1 @@
+<?phpuse Illuminate\Support\Facades\Route;use App\Http\Controllers\Client\Common\Product\GameController;Route::prefix('games')->group(function () {    Route::prefix('{games}')->group(function () {        Route::get('', [GameController::class, 'show']);    });});

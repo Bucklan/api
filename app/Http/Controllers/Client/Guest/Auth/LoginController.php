@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers\Client\Guest\Auth;
 
+use App\Services\Client\Contracts\Login;
 use Illuminate\Http\JsonResponse;
-use App\Services\Client\Requests as Requests;
+use App\Services\Client\Requests\Login\LoginRequest;
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 
 class LoginController
 {
-    public function login(Requests\Login\LoginRequest $request): JsonResponse
+
+    /**
+     * @throws UnknownProperties
+     */
+    public function login(LoginRequest $request): JsonResponse
     {
-        $response = app(Contracts\Login::class)->execute(
+        $response = app(Login::class)->execute(
             $request->get('phone')
         );
 

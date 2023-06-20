@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Filterable;
 use App\Traits\HasMedia;
+use App\Traits\Product\HasScopes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -92,7 +93,8 @@ class Product extends Model
 {
     use HasFactory,
         Filterable,
-        HasMedia;
+        HasMedia,
+        HasScopes;
 
     protected $fillable = [
         'name',

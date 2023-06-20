@@ -1,0 +1,1 @@
+<?phpnamespace App\Http\Controllers\Client\User\Promodcode;use App\Http\Controllers\Controller;use App\Services\Client\Requests\Promocode\GetValueRequest;class PromocodeController extends Controller{    }

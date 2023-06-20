@@ -14,20 +14,20 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $this->model = $model;
     }
 
-    public function getAllByCityQuery(
-        string $city_id,
-        array  $columns = ['*'],
-        array  $relations = [],
-        array  $relations_count = []
-    ): Builder
-    {
-        return $this->model
-            ->query()
-            ->select($columns)
-            ->where('city_id', $city_id)
-            ->with($relations)
-            ->withCount($relations_count);
-    }
+//    public function getAllByCityQuery(
+//        string $city_id,
+//        array  $columns = ['*'],
+//        array  $relations = [],
+//        array  $relations_count = []
+//    ): Builder
+//    {
+//        return $this->model
+//            ->query()
+//            ->select($columns)
+//            ->where('city_id', $city_id)
+//            ->with($relations)
+//            ->withCount($relations_count);
+//    }
 
     public function getAllByCity(
         string $city_id,
@@ -45,16 +45,16 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
             ->get();
     }
 
-    public function getListByCity(
-        string  $city_id,
-        string  $value,
-        ?string $key,
-    ): array
-    {
-        return $this->model
-            ->query()
-            ->whereCategoryInCity($city_id)
-            ->pluck($value, $key)
-            ->toArray();
-    }
+//    public function getListByCity(
+//        string  $city_id,
+//        string  $value,
+//        ?string $key,
+//    ): array
+//    {
+//        return $this->model
+//            ->query()
+//            ->whereCategoryInCity($city_id)
+//            ->pluck($value, $key)
+//            ->toArray();
+//    }
 }

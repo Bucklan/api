@@ -1,0 +1,1 @@
+<?phpuse Illuminate\Support\Facades\Route;use App\Http\Controllers\Client\Common\Banner as Client;Route::prefix('banners')->group(function (){    Route::get('',[Client\BannerController::class,'index']);});

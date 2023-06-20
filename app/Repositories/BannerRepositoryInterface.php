@@ -1,0 +1,1 @@
+<?phpnamespace App\Repositories;use Illuminate\Database\Eloquent\Collection;interface BannerRepositoryInterface extends EloquentRepositoryInterface{    public function getAllByCity(        string $city_id,        array $columns = ['*'],        array $relations = [],        array $relations_count = []    ): Collection;}

@@ -20,6 +20,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         array  $relations_count = []
     ): Collection
     {
+
         return $this->model
             ->query()
             ->select($columns)

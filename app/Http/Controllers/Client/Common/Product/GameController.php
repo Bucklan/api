@@ -1,0 +1,1 @@
+<?phpnamespace App\Http\Controllers\Client\Common\Product;use App\Http\Controllers\Controller;use App\Models\Product;use App\Services\Client\Resources\Game\ShowResource;class GameController extends Controller{    public function show(Product $game): ShowResource    {        return new ShowResource($game);    }}

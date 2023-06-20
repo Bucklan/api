@@ -2,17 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Banner extends Model
+/**
+ *
+ * @method static Builder|Banner filterBy($filters)
+ * @method static Builder|Banner newModelQuery()
+ * @method static Builder|Banner newQuery()
+ * @method static Builder|Banner query()
+ * @method static Builder|Banner whereCreatedAt($value)
+ * @method static Builder|Banner whereId($value)
+ * @method static Builder|Banner whereName($value)
+ * @method static Builder|Banner whereUpdatedAt($value)
+ */
+class Banner extends BaseModel
 {
     use HasFactory;
-    use HasMedia,
-        Filterable,
-        Orderable;
-
     protected $fillable = [
         'city_id',
         'position',

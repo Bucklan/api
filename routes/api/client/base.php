@@ -9,10 +9,10 @@ Route::prefix('client')->group(function () {
 //    include('common/help-sections.php');
 
 //    Route::group(['middleware' => 'city_checker'], function () {
-//        include('common/banners.php');
+        include('common/banners.php');
         include('common/genres.php');
         include('common/categories.php');
-//        include('common/games.php');
+        include('common/games.php');
 //        include('common/sets.php');
         include('common/product.php');
 //    });
