@@ -2,20 +2,20 @@
 
 namespace App\Services\Client\Requests\Login;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends Request
+class LoginRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
-        return true;
+        return auth()->guest();
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
-            'phone' => 'required|phone|numeric|max:20|exists:users,phone',
-            'device_token' => 'nullable|string|max:1000',
+            'phone' => ['required', 'phone', 'exists:users,phone'],
+            'device_token' => ['nullable', 'string', 'max:1000'],
         ];
     }
 }

@@ -1,0 +1,1 @@
+<?phpnamespace App\Tasks\Client;use App\Models\User;class LoggedInTask{    public function run(User $model): void    {        $model->last_login = now()->toDateTimeString();        $model->login_count += 1;        $model->saveQuietly();    }}

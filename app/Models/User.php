@@ -10,6 +10,8 @@ use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -115,7 +117,7 @@ class User extends Authenticatable implements Authorizable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'data_birth'
+        'data_birth' => 'datatime',
     ];
 
     public function isLoginBlocked(): bool
@@ -128,18 +130,30 @@ class User extends Authenticatable implements Authorizable
         return $this->getFile() ?? asset('default_avatar.svg');
     }
 
-    public function clients()
+    public function isDeleted(): bool
     {
-        return $this->hasMany(User::class);
+        return $this->deleted_at != null;
     }
 
-    public function couriers()
+    public function hasVerifiedPhone(): bool
     {
-        return $this->hasMany(Courier::class);
+        return !is_null($this->phone_verified_at);
     }
 
-    public function managers()
+
+
+    public function client(): HasOne
     {
-        return $this->hasMany(Manager::class);
+        return $this->hasOne(Client::class);
+    }
+
+    public function courier(): HasOne
+    {
+        return $this->hasOne(Courier::class);
+    }
+
+    public function manager(): HasOne
+    {
+        return $this->hasOne(Manager::class);
     }
 }

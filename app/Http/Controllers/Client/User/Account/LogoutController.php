@@ -1,0 +1,1 @@
+<?phpnamespace App\Http\Controllers\Client\User\Account;use App\Http\Controllers\Controller;use App\Services\Client\Contracts;class LogoutController extends Controller{    public function logout(): void    {        app(Contracts\Logout::class)->execute();    }}

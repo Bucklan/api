@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Actions\Logout;use App\Models\User;use App\Services\Client\Contracts\Logout;use Illuminate\Support\Facades\Auth;class LogoutAction implements Logout{    public function execute(): void    {        /** @var User $client */        $client = Auth::user();        $client->tokens()->delete();    }}

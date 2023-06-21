@@ -12,5 +12,6 @@ Route::prefix('auth')->group(function () {
     });
     Route::prefix('login')->group(function () {
         Route::post('', [Auth\LoginController::class, 'login']);
+        Route::post('verify-code', [Auth\LoginController::class, 'verifyCode']);
     });
 });

@@ -1,0 +1,1 @@
+<?phpnamespace App\Tasks\Verification;use App\Enums\Verification\Status;use App\Models\User;class VerifyTask{    public function run(User $model): void    {        $model->current_verification()->update([            'status' => Status::USED,        ]);    }}

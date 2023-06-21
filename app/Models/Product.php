@@ -108,7 +108,7 @@ class Product extends Model
 
     public function getImage(): string
     {
-        return $this->file ? $this->file->getFile() : asset('default.png');
+        return $this->file ? $this->file->getFile() : asset('default_image.png');
     }
     public function category(): BelongsTo
     {

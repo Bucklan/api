@@ -1,0 +1,1 @@
+<?phpnamespace App\Tasks\Client;use App\Models\User;class GenerateTokenTask{    public function run(User $model): string    {        return $model->createToken('auth_token')->plainTextToken;    }}

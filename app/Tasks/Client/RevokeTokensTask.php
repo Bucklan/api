@@ -1,0 +1,1 @@
+<?phpnamespace App\Tasks\Client;use App\Models\User;class RevokeTokensTask{    public function run(User $model): void    {        $model->tokens()->delete();    }}

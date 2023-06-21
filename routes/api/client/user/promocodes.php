@@ -1,1 +1,1 @@
-<?phpuse Illuminate\Support\Facades\Route;Route::prefix('promocodes')->group(function () {    Route::get('get-value', [\App\Http\Controllers\Client\User\Promodcode\PromocodeController::class, 'getValue']);});
+<?phpuse Illuminate\Support\Facades\Route;use App\Http\Controllers\Client\User\Promodcode\PromocodeController;Route::prefix('promocodes')->group(function () {    Route::get('get-value', [PromocodeController::class, 'getValue']);});

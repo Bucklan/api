@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;interface Logout{    public function execute() :void;}
