@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Requests\Order;use Illuminate\Foundation\Http\FormRequest;class ShowRequest extends FormRequest{    public function authorize(): bool    {        return true;    }    public function rules(): array    {        return [            'price_id' => 'required|numeric',        ];    }}

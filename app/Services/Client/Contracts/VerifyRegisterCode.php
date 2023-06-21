@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use App\Services\Client\Dto\Registration\VerifyCodeDto;interface VerifyRegisterCode{    public function execute(VerifyCodeDto $dto): array;}

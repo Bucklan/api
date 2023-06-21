@@ -14,5 +14,6 @@ class RepositoryServiceProvider extends ServiceProvider
         Repositories\GenreRepositoryInterface::class => Repositories\Eloquent\GenreRepository::class,
         Repositories\ProductRepositoryInterface::class => Repositories\Eloquent\ProductRepository::class,
         Repositories\BannerRepositoryInterface::class => Repositories\Eloquent\BannerRepository::class,
+        Repositories\PromocodeRepositoryInterface::class => Repositories\Eloquent\PromocodeRepository::class,
     ];
 }

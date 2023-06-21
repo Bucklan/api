@@ -1,0 +1,1 @@
+<?phpnamespace App\Enums\Verification;use BenSampo\Enum\Enum;final class Status extends Enum{const USED = 'used';const NOT_USED = 'not_used';}

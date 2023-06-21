@@ -1,0 +1,1 @@
+<?phpnamespace App\Tasks\Client;use App\Models\User;class VerifyPhoneTask{    public function run(User $model): void    {        $model->phone_verified_at = now()->toDateTimeString();        $model->saveQuietly();    }}

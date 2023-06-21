@@ -1,0 +1,1 @@
+<?phpnamespace App\Tasks\Client;use App\Models\User;class CreateOrUpdateDeviceTokenTask{    public function run(User $model, string $device_token): void    {        $model->device_token()->updateOrCreate(['token' => $device_token]);        $model->saveQuietly();    }}

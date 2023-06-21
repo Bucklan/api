@@ -1,0 +1,1 @@
+<?phpnamespace App\Tasks\Promocode;use App\Models\Promocode;use App\Repositories\PromocodeRepositoryInterface;class FindPromocodeByCodeTask{    public function __construct(private readonly PromocodeRepositoryInterface $repository)    {    }    public function run(string $code): ?Promocode    {        return $this->repository->findByCode($code);    }}

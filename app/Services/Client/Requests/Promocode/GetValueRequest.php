@@ -1,1 +1,1 @@
-<?phpnamespace App\Services\Client\Requests\Promocode;class GetValueRequest{}
+<?phpnamespace App\Services\Client\Requests\Promocode;use Illuminate\Foundation\Http\FormRequest;class GetValueRequest extends FormRequest{    public function authorize(): bool    {        return true;    }    public function rules(): array    {        return [            'promocode' => ['required', 'string'],        ];    }    public function attributes(): array    {        return [            'promocode' => sprintf('«%s»', __('Промокод')),        ];    }}

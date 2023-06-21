@@ -29,12 +29,14 @@ class UserRepository extends BaseRepository implements UserRepInterface
             ->exists();
     }
 
-//    public function findByPhone(
-//        string $phone
-//    ): ?User
-//    {
-//        return $this->model->query()->where('phone', $phone)
-//            ->first();
-//    }
+    public function findByPhone(
+        string $phone
+    ): ?User
+    {
+        return $this->model
+            ->query()
+            ->where('phone', $phone)
+            ->first();
+    }
 
 }

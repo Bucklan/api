@@ -7,6 +7,8 @@ Route::prefix('auth')->group(function () {
 
     Route::prefix('register')->group(function () {
         Route::post('', [Auth\RegisterController::class, 'register']);
+        Route::post('verify-code', [Auth\RegisterController::class, 'verifyCode']);
+
     });
     Route::prefix('login')->group(function () {
         Route::post('', [Auth\LoginController::class, 'login']);

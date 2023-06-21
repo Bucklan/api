@@ -1,0 +1,1 @@
+<?phpnamespace App\Repositories;use App\Models\Promocode;interface PromocodeRepositoryInterface extends EloquentRepositoryInterface{    public function findByCode(string $code): ?Promocode;}

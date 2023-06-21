@@ -21,10 +21,16 @@ class Client extends Model
         return $this->getFile() ?? asset('default_avatar.svg');
     }
 
+    public function getBonusSum($value = null): int
+    {
+        return $value ?? $this->sum('bonus_amount');
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

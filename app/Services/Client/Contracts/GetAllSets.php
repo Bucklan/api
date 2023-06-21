@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use Illuminate\Contracts\Pagination\Paginator;interface GetAllSets{    public function execute(string $city_id): Paginator;}

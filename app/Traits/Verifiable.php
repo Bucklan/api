@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Enums\Verification\Status;
 use App\Models\Verification;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Auth;
 
 trait Verifiable
 {

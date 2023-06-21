@@ -31,5 +31,21 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ->get();
     }
 
-
+    public function getAllSetsByCity(
+        string $city_id,
+        array  $columns = ['*'],
+        array  $relations = [],
+        array  $relations_count = []
+    ): \Illuminate\Contracts\Pagination\Paginator
+    {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->WhereProductIsSet()
+            ->joinRelationship('category')
+            ->WhereProductInCity($city_id)
+            ->with($relations)
+            ->withCount($relations_count)
+            ->simplePaginate();
+    }
 }

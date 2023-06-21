@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;interface GetPromocodeValue{public function execute(string $promocode): string;}

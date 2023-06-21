@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Kirschbaum\PowerJoins\PowerJoins;
 
 /**
  * App\Models\Product
@@ -91,7 +92,8 @@ use Illuminate\Support\Carbon;
 
 class Product extends Model
 {
-    use HasFactory,
+    use PowerJoins,
+        HasFactory,
         Filterable,
         HasMedia,
         HasScopes;

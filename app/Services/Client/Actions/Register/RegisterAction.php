@@ -2,10 +2,10 @@
 
 namespace App\Services\Client\Actions\Register;
 
-use App\Enums\Gender\Type;
 use App\Models\User;
 use App\Services\Client\Contracts\Register;
 use App\Services\Client\Dto\Registration\RegisterDto;
+use App\SubActions\Client\CreateOrUpdateVerificationSubAction;
 use App\Tasks\Client as Client;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 use Throwable;
@@ -22,7 +22,8 @@ class RegisterAction implements Register
         $this->ensureThatPhoneIsNotRegistered($dto->phone);
         $data = DB::transaction(function () use ($dto) {
             $user = $this->createUser($dto);
-            return compact('user');
+            $verificationCode = $this->createVerification($user);
+            return compact('user', 'verificationCode');
         });
         return [
             'phone' => $data['user']->phone
@@ -34,6 +35,11 @@ class RegisterAction implements Register
     {
         return User::create($dto->except()->toArray());
 
+    }
+
+    private function createVerification(User $client): string
+    {
+        return app(CreateOrUpdateVerificationSubAction::class)->run($client, 'Регистрация');
     }
 
     private function ensureThatPhoneIsNotRegisteredAndDeleted(string $phone): void

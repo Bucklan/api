@@ -14,5 +14,9 @@ class ActionServiceProvider extends ServiceProvider
         ClientService\Contracts\GetAllGenres::class => ClientService\Actions\Genre\GetGenreAction::class,
         ClientService\Contracts\GetGamesByGenre::class => ClientService\Actions\Game\GetByGenreAction::class,
         ClientService\Contracts\GetAllBanners::class => ClientService\Actions\Banner\GetAllAction::class,
+        ClientService\Contracts\GetPromocodeValue::class => ClientService\Actions\Promocode\GetPromocodeAction::class,
+        ClientService\Contracts\GetAllSets::class => ClientService\Actions\Set\GetAllAction::class,
+        ClientService\Contracts\GetMakeOrder::class => ClientService\Actions\Order\GetMakeAction::class,
+        ClientService\Contracts\VerifyRegisterCode::class => ClientService\Actions\Register\VerifyCodeAction::class,
     ];
 }
