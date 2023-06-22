@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use App\Models\ClientAddress;interface DestroyAddress{public function execute(ClientAddress $address);}

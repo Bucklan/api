@@ -47,5 +47,9 @@ class City extends Model
     {
         return $this->hasMany(Promocode::class);
     }
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(ClientAddress::class);
+    }
 
 }

@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Actions\ClientAddress;use App\Models\ClientAddress;use App\Services\Client\Contracts\DestroyAddress;class DestroyAction implements DestroyAddress{    public function execute(ClientAddress $address){        $address->delete();    }}

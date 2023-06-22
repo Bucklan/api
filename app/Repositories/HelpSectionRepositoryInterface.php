@@ -1,0 +1,1 @@
+<?phpnamespace App\Repositories;use Illuminate\Database\Eloquent\Collection;interface HelpSectionRepositoryInterface extends EloquentRepositoryInterface{    public function getAll(        array $columns = ['*'],        array $relations = [],        array $relations_count = []    ): Collection;}

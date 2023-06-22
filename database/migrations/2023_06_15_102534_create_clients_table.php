@@ -15,11 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('promo_code',16)->unique();
-            $table->string('street')->nullable();//
-            $table->string('building')->nullable();//
-            $table->string('apartment')->nullable();//
-            $table->string('bonus_amount')->nullable();
-            $table->string('bonus_description')->nullable();
+            $table->unsignedDouble('bonus_amount')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

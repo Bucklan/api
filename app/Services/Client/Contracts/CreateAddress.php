@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use App\Services\Client\Dto\ClientAddress\StoreDto;interface CreateAddress{    public function execute(StoreDto $dto) :void;}

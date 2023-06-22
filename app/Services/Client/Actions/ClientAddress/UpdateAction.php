@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Actions\ClientAddress;use App\Models\ClientAddress;use App\Services\Client\Contracts\UpdateAddress;use App\Services\Client\Dto\ClientAddress\UpdateDto;class UpdateAction implements UpdateAddress{    public function execute(ClientAddress $address, UpdateDto $dto): void    {        $address->update($dto->toArray());    }}

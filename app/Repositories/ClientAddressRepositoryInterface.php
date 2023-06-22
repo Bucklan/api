@@ -1,0 +1,1 @@
+<?phpnamespace App\Repositories;use Illuminate\Database\Eloquent\Collection;interface ClientAddressRepositoryInterface extends EloquentRepositoryInterface{    public function getAllByClient(        string $client_id,        array $columns = ['*'],        array $relations = [],        array $relations_count = []    ): Collection;}

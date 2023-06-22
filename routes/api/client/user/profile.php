@@ -1,0 +1,1 @@
+<?phpuse Illuminate\Support\Facades\Route;use App\Http\Controllers\Client\User\Account\ProfileController;Route::prefix('profile')->group(function () {    Route::get('', [ProfileController::class, 'index']);    Route::prefix('friends')->group(function () {    });    Route::prefix('bonus')->group(function () {    });});

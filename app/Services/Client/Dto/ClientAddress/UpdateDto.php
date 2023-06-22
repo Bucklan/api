@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Dto\ClientAddress;use Spatie\DataTransferObject\DataTransferObject;class UpdateDto extends DataTransferObject{    public int $city_id;    public string $street;    public string $building;    public string $apartment;}

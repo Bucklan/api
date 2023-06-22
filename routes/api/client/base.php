@@ -7,7 +7,7 @@ Route::prefix('client')->group(function () {
 //Route::group(['prefix' => 'client', 'middleware' => 'localization'], function () {
 
     include('common/cities.php');
-//    include('common/help-sections.php');
+    include('common/help-sections.php');
 
 //    Route::group(['middleware' => 'city_checker'], function () {
     include('common/banners.php');
@@ -24,9 +24,9 @@ Route::prefix('client')->group(function () {
 
     Route::group(['prefix' => 'user', 'middleware' => 'auth:sanctum'], function () {
 //        include('user/carts.php');
-//        include('user/addresses.php');
+        include('user/addresses.php');
         include('user/orders.php');
-//        include('user/profile.php');
+        include('user/profile.php');
         include('user/promocodes.php');
         Route::post('logout', [LogoutController::class, 'logout']);
     });

@@ -1,0 +1,1 @@
+<?phpnamespace App\Http\Controllers\Client\User\Account;use App\Http\Controllers\Controller;use App\Services\Client\Resources\Profile\ShowResource;use Illuminate\Support\Facades\Auth;class ProfileController extends Controller{    public function index()    {        $client = Auth::user();        return new ShowResource($client);    }}

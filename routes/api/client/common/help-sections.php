@@ -1,0 +1,1 @@
+<?phpuse Illuminate\Support\Facades\Route;use App\Http\Controllers\Client\Common\HelpSection\SectionController;Route::prefix('help-sections')->group(function () {    Route::get('', [SectionController::class, 'index']);});

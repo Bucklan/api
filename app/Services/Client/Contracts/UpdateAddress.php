@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use App\Models\ClientAddress;use App\Services\Client\Dto\ClientAddress\UpdateDto;interface UpdateAddress{    public function execute(ClientAddress $address, UpdateDto $dto): void;}

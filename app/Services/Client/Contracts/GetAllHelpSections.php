@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;interface GetAllHelpSections{    public function execute(): array;}

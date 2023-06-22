@@ -25,6 +25,7 @@ use Spatie\Permission\Traits\HasRoles;
  * App\Models\User
  *
  * @property int $id
+ * @property int $city_id
  * @property string $phone
  * @property string $name Имя
  * @property string $surname Фамилия
@@ -117,7 +118,6 @@ class User extends Authenticatable implements Authorizable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'data_birth' => 'datatime',
     ];
 
     public function isLoginBlocked(): bool
