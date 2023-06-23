@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use Illuminate\Database\Eloquent\Collection;interface GetAllClientInvites{public function execute():Collection;}

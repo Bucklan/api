@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Actions\Cart;use App\Models\Client;use App\Services\Client\Contracts\DestroyAllCart;use Auth;class DestroyAllAction implements DestroyAllCart{    public function execute(): void    {        /** @var Client $client */        $client = Auth::user();        $client->carts()->delete();    }}

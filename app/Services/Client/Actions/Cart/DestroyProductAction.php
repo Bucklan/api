@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Actions\Cart;use App\Models\Cart;use App\Services\Client\Contracts\DestroyAddress;use App\Services\Client\Contracts\DestroyProductCart;class DestroyProductAction implements DestroyProductCart{    public function execute(Cart $cart): void    {        $cart->delete();    }}

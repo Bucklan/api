@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,10 +20,6 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @property int $id
  * @property string $promo_code
  * @property int $user_id
- * @property int $city_id
- * @property string $street Улица
- * @property string|null $building Дом/корпус
- * @property string|null $apartment Кв/офис
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $remember_token
@@ -96,5 +93,10 @@ class Client extends Model
     public function addresses(): HasMany
     {
         return $this->hasMany(ClientAddress::class);
+    }
+
+    public function carts(): HasMany
+    {
+        return $this->hasMany(Cart::class);
     }
 }

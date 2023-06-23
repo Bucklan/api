@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Requests\Cart;use Illuminate\Foundation\Http\FormRequest;class StoreRequest extends FormRequest{    public function authorize()    {        return auth()->check();    }    public function rules()    {        return [        ];    }}

@@ -8,11 +8,26 @@ use Illuminate\Database\Seeder;
 
 class CitySeeder extends Seeder
 {
+    public array $cities = [
+        [
+            'name' => [
+                'kz' => 'Алматы',
+                'ru' => 'Алматы',
+            ],
+        ],
+        [
+            'name' => [
+                'kz' => 'Астана',
+                'ru' => 'Астана',
+            ],
+        ],
+    ];
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        City::factory(5)->create();
+
+
     }
 }

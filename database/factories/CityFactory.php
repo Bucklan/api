@@ -9,10 +9,19 @@ class CityFactory extends Factory
 {
     public function definition(): array
     {
-        return [
-            'name' => json_encode(['city' => [fake()->numberBetween(1,17), fake()->city]]),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ];
+        return  [
+        [
+            'name' => [
+                'kz' => 'Алматы',
+                'ru' => 'Алматы',
+            ],
+        ],
+        [
+            'name' => [
+                'kz' => 'Астана',
+                'ru' => 'Астана',
+            ],
+        ],
+    ];
     }
 }

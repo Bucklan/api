@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use App\Models\Cart;interface DestroyProductCart{    public function execute(Cart $cart): void;}

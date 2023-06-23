@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Client\Contracts;use App\Models\Product;use Illuminate\Database\Eloquent\Collection;interface AddProductToCart{    public function execute(Product $product, string $quantity, string $price_id): void;}

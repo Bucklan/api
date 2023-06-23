@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('client_invites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')
+            $table->foreignId('user_id')
                 ->constrained()
                 ->restrictOnDelete();
-            $table->foreignId('invited_client_id')
-                ->constrained('clients')
+            $table->foreignId('invited_user_id')
+                ->constrained('users')
                 ->restrictOnDelete();
             $table->boolean('ordered')->default(false);
             $table->timestamps();
