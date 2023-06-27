@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Admin\Contracts;interface DeleteCity{public function execute(City $city): void;}

@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Admin\Contracts;use App\Models\City;interface UpdateCity{public function execute(City $city,array $name): void;}

@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class City extends Model
 {
-    use HasFactory;
-//        Translatable;
+    use Filterable,
+        Translatable;
 
-//    protected array $translatable = [
-//        'name',
-//    ];
-//    protected $fillable = ['name'];
+    protected array $translatable = [
+        'name',
+    ];
+    protected $fillable = ['name'];
 
     public function categories(): HasMany
     {

@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\Guest\Auth as Auth;
+use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'auth'], function () {
-    Route::group(['prefix' => 'login'], function () {
-        Route::post('', [Auth\LoginController::class, 'login'])->middleware('throttle:api.login');
+Route::prefix('auth')->group(function () {
+    Route::prefix('login')->group(function () {
+        Route::post('', [Auth\LoginController::class, 'login']);
     });
 });

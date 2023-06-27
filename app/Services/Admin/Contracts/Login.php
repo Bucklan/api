@@ -4,5 +4,7 @@ namespace App\Services\Admin\Contracts;
 
 interface Login
 {
-public function execute();
+    public function execute(string $email, string $password): array;
+
+
 }

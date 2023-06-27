@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Admin\Contracts;interface CreateCity{public function execute(array $name): void;}

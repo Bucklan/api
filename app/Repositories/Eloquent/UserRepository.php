@@ -39,4 +39,20 @@ class UserRepository extends BaseRepository implements UserRepInterface
             ->first();
     }
 
+    public function findByEmail(
+        string $email,
+        array  $columns = ['*'],
+        array  $relations = [],
+        array  $relations_count = []
+    ): ?User
+    {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->where('email', $email)
+            ->with($relations)
+            ->withCount($relations_count)
+            ->first();
+    }
+
 }

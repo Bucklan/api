@@ -14,19 +14,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="#">
-    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="keywords"
+          content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
     <!-- Favicon icon -->
-    <link rel="icon" href="libraries\assets\images\favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{asset('libraries\assets\images\favicon.ico')}}" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="libraries\bower_components\bootstrap\css\bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('libraries\bower_components\bootstrap\css\bootstrap.min.css')}}">
     <!-- feather Awesome -->
-    <link rel="stylesheet" type="text/css" href="libraries\assets\icon\feather\css\feather.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('libraries\assets\icon\feather\css\feather.css')}}">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="libraries\assets\css\style.css">
-    <link rel="stylesheet" type="text/css" href="libraries\assets\css\jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('libraries\assets\css\style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('libraries\assets\css\jquery.mCustomScrollbar.css')}}">
 </head>
 
 <body>
@@ -80,7 +82,7 @@
                         <i class="feather icon-menu"></i>
                     </a>
                     <a href="index-1.htm">
-                        <img class="img-fluid" src="libraries\assets\images\logo.png" alt="Theme-Logo">
+                        <img class="img-fluid" src="{{asset('libraries\assets\images\logo.png')}}" alt="Theme-Logo">
                     </a>
                     <a class="mobile-options">
                         <i class="feather icon-more-horizontal"></i>
@@ -94,7 +96,8 @@
                                 <div class="input-group">
                                     <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
                                     <input type="text" class="form-control">
-                                    <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
+                                    <span class="input-group-addon search-btn"><i
+                                                class="feather icon-search"></i></span>
                                 </div>
                             </div>
                         </li>
@@ -108,11 +111,13 @@
                         <li class="user-profile header-notification">
                             <div class="dropdown-primary dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="libraries\assets\images\avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <img src="{{asset('libraries\assets\images\avatar-4.jpg')}}" class="img-radius"
+                                         alt="User-Profile-Image">
                                     <span>John Doe</span>
                                     <i class="feather icon-chevron-down"></i>
                                 </div>
-                                <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                <ul class="show-notification profile-notification dropdown-menu"
+                                    data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                     <li>
                                         <a href="#!">
                                             <i class="feather icon-settings"></i> Settings
@@ -146,7 +151,6 @@
                 </div>
             </div>
         </nav>
-
 
 
         <!-- Sidebar inner chat end-->
@@ -188,15 +192,9 @@
                                 </ul>
                             </li>
                             <li class="">
-                                <a href="javascript:void(0)" class="disabled">
-                                    <span class="pcoded-micon"><i class="feather icon-power"></i></span>
-                                    <span class="pcoded-mtext">Disabled Menu</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="sample-page.htm">
+                                <a href="#">
                                     <span class="pcoded-micon"><i class="feather icon-watch"></i></span>
-                                    <span class="pcoded-mtext">Sample Page</span>
+                                    <span class="pcoded-mtext">Cities</span>
                                 </a>
                             </li>
                         </ul>
@@ -212,7 +210,8 @@
 <!--[if lt IE 10]>
 <div class="ie-warning">
     <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
+        to access this website.</p>
     <div class="iew-container">
         <ul class="iew-download">
             <li>
@@ -252,32 +251,38 @@
 <![endif]-->
 <!-- Warning Section Ends -->
 <!-- Required Jquery -->
-<script data-cfasync="false" src="..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js"></script><script type="text/javascript" src="libraries\bower_components\jquery\js\jquery.min.js"></script>
-<script type="text/javascript" src="libraries\bower_components\jquery-ui\js\jquery-ui.min.js"></script>
-<script type="text/javascript" src="libraries\bower_components\popper.js\js\popper.min.js"></script>
-<script type="text/javascript" src="libraries\bower_components\bootstrap\js\bootstrap.min.js"></script>
+<script data-cfasync="false" src="{{asset('..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('libraries\bower_components\jquery\js\jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('libraries\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('libraries\bower_components\popper.js\js\popper.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('libraries\bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
 <!-- jquery slimscroll js -->
-<script type="text/javascript" src="libraries\bower_components\jquery-slimscroll\js\jquery.slimscroll.js"></script>
+<script type="text/javascript"
+        src="{{asset('libraries\bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
 <!-- modernizr js -->
-<script type="text/javascript" src="libraries\bower_components\modernizr\js\modernizr.js"></script>
+<script type="text/javascript" src="{{asset('libraries\bower_components\modernizr\js\modernizr.js')}}"></script>
 <!-- Chart js -->
-<script type="text/javascript" src="libraries\bower_components\chart.js\js\Chart.js"></script>
+<script type="text/javascript" src="{{asset('libraries\bower_components\chart.js\js\Chart.js')}}"></script>
 <!-- amchart js -->
-<script src="libraries\assets\pages\widget\amchart\amcharts.js"></script>
-<script src="libraries\assets\pages\widget\amchart\serial.js"></script>
-<script src="libraries\assets\pages\widget\amchart\light.js"></script>
-<script src="libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="libraries\assets\js\SmoothScroll.js"></script>
-<script src="libraries\assets\js\pcoded.min.js"></script>
+<script src="{{asset('libraries\assets\pages\widget\amchart\amcharts.js')}}"></script>
+<script src="{{asset('libraries\assets\pages\widget\amchart\serial.js')}}"></script>
+<script src="{{asset('libraries\assets\pages\widget\amchart\light.js')}}"></script>
+<script src="{{asset('libraries\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('libraries\assets\js\SmoothScroll.js')}}"></script>
+<script src="{{asset('libraries\assets\js\pcoded.min.js')}}"></script>
 <!-- custom js -->
-<script src="libraries\assets\js\vartical-layout.min.js"></script>
-<script type="text/javascript" src="libraries\assets\pages\dashboard\custom-dashboard.js"></script>
-<script type="text/javascript" src="libraries\assets\js\script.min.js"></script>
+<script src="{{asset('libraries\assets\js\vartical-layout.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('libraries\assets\pages\dashboard\custom-dashboard.js')}}"></script>
+<script type="text/javascript" src="{{asset('libraries\assets\js\script.min.js')}}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'UA-23581568-13');

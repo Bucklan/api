@@ -13,4 +13,11 @@ interface UserRepInterface extends EloquentRepositoryInterface
     public function findByPhone(
         string $phone
     ): ?User;
+
+    public function findByEmail(
+        string $email,
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): ?User;
 }

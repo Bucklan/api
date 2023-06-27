@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Admin\Actions\City;use App\Models\City;use App\Services\Admin\Contracts\CreateCity;use App\Services\Client\Contracts\CreateAddress;class CreateAction implements CreateCity{    public function execute(array $name): void    {        City::create([            'name' => $name,        ]);    }}

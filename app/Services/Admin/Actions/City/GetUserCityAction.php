@@ -12,7 +12,8 @@ class GetUserCityAction implements GetUserCity
     public function execute(): ?string
     {
         /** @var User|Manager $user */
-        $user = Auth::user();
+        $user = User::first();
+//        $user = User::user();
 
         return $user->city_id;
     }

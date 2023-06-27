@@ -1,0 +1,1 @@
+<?phpnamespace App\Services\Admin\Actions\City;use App\Models\City;use App\Services\Admin\Contracts\UpdateCity;class UpdateAction implements UpdateCity{    public function execute(City $city, array $name): void    {        $city->update([            'name' => $name        ]);    }}

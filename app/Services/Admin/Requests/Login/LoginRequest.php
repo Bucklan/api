@@ -2,7 +2,9 @@
 
 namespace App\Services\Admin\Requests\Login;
 
-class LoginRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class LoginRequest extends FormRequest
 {
     public function boot(): bool
     {
@@ -14,14 +16,6 @@ class LoginRequest
         return [
             'email' => 'required|string',
             'password' => 'required|string',
-        ];
-    }
-
-    public function attributes(): array
-    {
-        return [
-            'email' => sprintf('«%s»', __('Логин')),
-            'password' => sprintf('«%s»', __('Пароль')),
         ];
     }
 }
