@@ -2,16 +2,16 @@
 
 //use App\Http\Controllers\Admin\User\Account\LogoutController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\User\Account\LogoutController;
 
 Route::prefix('admin')->group(function () {
     Route::middleware('guest')->group(function () {
         include('guest/auth.php');
     });
 
-//    Route::group(['prefix' => 'user',/* 'middleware' => ['auth:sanctum', 'role:developer|super_admin|manager|courier']*/], function () {
-        Route::prefix('user')->group(function () {
+    Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', /*'role:developer|super_admin|manager|courier'*/]], function () {
 //        include('user/account.php');
-//        include('user/dashboard.php');
+        include('user/dashboard.php');
         include('user/cities.php');
 //        include('user/genres.php');
 //        include('user/categories.php');

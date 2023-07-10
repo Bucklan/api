@@ -38,4 +38,12 @@ class Setting extends BaseModel
         'created_at',
         'updated_at',
     ];
+    protected $fillable = [
+        'register_count',
+        'register_amount',
+        'order_count',
+        'order_amount',
+        'contact_telegram',
+        'contact_whatsapp',
+    ];
 }

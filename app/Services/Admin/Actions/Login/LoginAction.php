@@ -23,8 +23,8 @@ class LoginAction implements Login
      */
     public function execute(string $email, string $password): array
     {
-
         $user = app(FindByEmail::class)->run($email);
+//        dd($user);
         if (!empty($user)) {
             $this->validateLogin($email, $password);
         }
@@ -46,9 +46,9 @@ class LoginAction implements Login
     private function validateLogin(string $email, string $password): void
     {
 
-        if (!Auth::attempt(['email' => $email, 'password' => bcrypt($password)])) {
+        if (!Auth::attempt(['email' => $email, 'password' => $password])) {
             throw ValidationException::withMessages([
-                __('These credentials do not match our records')
+                __('1These credentials do not match our records')
             ]);
         }
     }
@@ -60,7 +60,7 @@ class LoginAction implements Login
     {
         if (!$user->hasAnyRole([Role::MANAGER, Role::DEVELOPER, Role::SUPER_ADMIN, Role::COURIER])) {
             throw ValidationException::withMessages([
-                'email' => 'These credentials do not match our records',
+                'email' => '2These credentials do not match our records',
             ]);
         }
     }
@@ -72,7 +72,7 @@ class LoginAction implements Login
     {
         if ($user->isLoginBlocked()) {
             throw ValidationException::withMessages([
-                'These credentials do not match our records'
+                '3These credentials do not match our records'
             ]);
         }
     }

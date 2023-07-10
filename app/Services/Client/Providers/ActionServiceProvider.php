@@ -32,5 +32,6 @@ class ActionServiceProvider extends ServiceProvider
         ClientService\Contracts\DestroyProductCart::class   =>   ClientService\Actions\Cart\DestroyProductAction::class,
         ClientService\Contracts\DestroyAllCart::class       =>   ClientService\Actions\Cart\DestroyAllAction::class,
         ClientService\Contracts\StoreOrder::class           =>   ClientService\Actions\Order\StoreAction::class,
+        ClientService\Contracts\GetAllOrders::class           =>   ClientService\Actions\Order\GetAllAction::class,
     ];
 }

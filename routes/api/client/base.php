@@ -7,10 +7,10 @@ Route::group(['prefix' => 'client',/* 'middleware' => 'localization'*/], functio
 
     include('common/cities.php');
     include('common/help-sections.php');
+    include('common/genres.php');
 
     Route::middleware('city_checker')->group(function () {
         include('common/banners.php');
-        include('common/genres.php');
         include('common/categories.php');
         include('common/games.php');
         include('common/sets.php');

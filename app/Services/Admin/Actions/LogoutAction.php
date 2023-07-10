@@ -12,7 +12,6 @@ public function execute() :void
 {
     /** @var User $user */
     $user = Auth::user();
-
     $user->tokens()->delete();
 }
 }

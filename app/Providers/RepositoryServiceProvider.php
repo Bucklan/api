@@ -19,5 +19,6 @@ class RepositoryServiceProvider extends ServiceProvider
         Repositories\HelpSectionRepositoryInterface::class     =>   Repositories\Eloquent\HelpSectionRepository::class,
         Repositories\ClientInviteRepositoryInterface::class    =>   Repositories\Eloquent\ClientInviteRepository::class,
         Repositories\CartRepositoryInterface::class            =>   Repositories\Eloquent\CartRepository::class,
+        Repositories\OrderRepositoryInterface::class           =>   Repositories\Eloquent\OrderRepository::class,
     ];
 }

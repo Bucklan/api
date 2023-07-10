@@ -4,11 +4,6 @@ namespace App\Enums\File;
 
 use BenSampo\Enum\Enum;
 
-/**
- * @method static static OptionOne()
- * @method static static OptionTwo()
- * @method static static OptionThree()
- */
 final class Type extends Enum
 {
     const PHOTO = '1';

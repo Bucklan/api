@@ -18,17 +18,25 @@ class RegisterAction implements Register
      */
     public function execute(RegisterDto $dto): array
     {
-        $this->ensureThatPhoneIsNotRegisteredAndDeleted($dto->phone);
-        $this->ensureThatPhoneIsNotRegistered($dto->phone);
+        if (isset($dto->phone)) {
+            $this->ensureThatPhoneIsNotRegisteredAndDeleted($dto->phone);
+            $this->ensureThatPhoneIsNotRegistered($dto->phone);
+        }
         $data = DB::transaction(function () use ($dto) {
             $user = $this->createUser($dto);
             $verificationCode = $this->createVerification($user);
             return compact('user', 'verificationCode');
         });
-        return [
-            'phone' => $data['user']->phone
-        ];
-
+        if (isset($dto->phone)) {
+            return [
+                'phone' => $data['user']->phone
+            ];
+        }
+        else{
+            return [
+              'email' => $data['user']->email
+            ];
+        }
     }
 
     private function createUser(RegisterDto $dto): User

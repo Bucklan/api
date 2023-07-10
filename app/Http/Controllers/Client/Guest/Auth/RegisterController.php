@@ -15,11 +15,13 @@ class RegisterController
 {
     public function register(RegisterRequest $request): JsonResponse
     {
+//        dd($request);
         $response = app(Register::class)->execute(
             Dto\Registration\RegisterDtoFactory::fromRequest($request)
         );
 
         return response()->json($response);
+
     }
     public function verifyCode(VerifyCodeRequest $request): JsonResponse
     {

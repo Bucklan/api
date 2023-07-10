@@ -19,9 +19,7 @@ return new class extends Migration {
             $table->integer('order_count')->nullable()
                 ->comment('Количество заказов для бонуса');
             $table->integer('order_amount')->nullable()
-                ->comment('Сумма бонуса за заказы');
-            $table->string('contact_telegram');
-            $table->string('contact_whatsapp');
+                ->comment('Сумма бонуса за заказы');;
             $table->timestamps();
         });
     }

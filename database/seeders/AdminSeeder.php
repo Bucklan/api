@@ -2,36 +2,32 @@
 
 namespace Database\Seeders;
 
-use App\Enums\Gender\Type;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
+use App\Enums as Enums;
 
 class AdminSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $admin = User::create([
-            'name' => 'admin',
-            'surname' => 'adminbek',
-            'email' => 'admin@gmail.com',
-            'gender' => Type::UNKNOWN,
-            'password' => Hash::make('admin'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+        $user = User::factory()->admin()->create();
 
+        $user->givePermissionTo([
+            Enums\User\Permission::DASHBOARD,
+            Enums\User\Permission::ORDERS,
+            Enums\User\Permission::CLIENTS,
+            Enums\User\Permission::MANAGERS,
+            Enums\User\Permission::COURIERS,
+            Enums\User\Permission::CATEGORIES,
+            Enums\User\Permission::GENRES,
+            Enums\User\Permission::PRODUCTS,
+            Enums\User\Permission::CITIES,
+            Enums\User\Permission::NOTIFICATIONS,
+            Enums\User\Permission::BANNERS,
+            Enums\User\Permission::SETTINGS,
+            Enums\User\Permission::PROMOCODES,
+            Enums\User\Permission::HELP_SECTIONS,
+            Enums\User\Permission::CONTACTS,
         ]);
-        Role::create([
-            'name' => 'admin',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-        $admin->assignRole(\App\Enums\User\Role::SUPER_ADMIN);
     }
 }
