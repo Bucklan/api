@@ -2,7 +2,5 @@
 <h2><a href="https://www.figma.com/file/grsR17TFu3zqFP4kNS8k8e/Космос?type=design&node-id=0-1&t=r91x0PoM8u5X7AbP-0">Flutter Page(Mobile apps)</a></h2>
 <hr>
 ## About Projects
-<h3>Data base structure</h3>
-<img src="public/Untitled.png">
 
 
