@@ -74,10 +74,6 @@ class Client extends Model
     protected $fillable = ['promo_code',
         'bonus_amount'];
 
-    public function isLoginBlocked(): bool
-    {
-        return $this->login_blocked_at != null;
-    }
 
 
     public function user(): HasOne

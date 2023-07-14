@@ -1,30 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Admin\User\Client;
+namespace App\Http\Controllers\Admin\User\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\Admin\Contracts as Contracts;
 
-class ClientController extends Controller
+class ManagerController extends Controller
 {
     public function datatable()
     {
-        return app(Contracts\GetDataTableClients::class)->execute();
+        return app(Contracts\GetDataTableManagers::class)->execute();
     }
 
     public function checkAccess()
     {
     }
 
+    public function create()
+    {
+        return app(Contracts\GetCitiesList::class)->execute();
+    }
+
+
     public function block(User $client)
     {
-        app(Contracts\BlockClient::class)->execute($client);
     }
 
     public function unblock(User $client)
     {
-        app(Contracts\UnBlockClient::class)->execute($client);
 
     }
 }

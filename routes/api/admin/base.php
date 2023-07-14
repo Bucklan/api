@@ -20,8 +20,8 @@ Route::prefix('admin')->group(function () {
 //        include('user/sets.php');
 //        include('user/banners.php');
 //        include('user/orders.php');
-//        include('user/managers.php');
-//        include('user/couriers.php');
+        include('user/managers.php');
+        include('user/couriers.php');
 //        include('user/settings.php');
 //        include('user/deliveries.php');
         include('user/clients.php');

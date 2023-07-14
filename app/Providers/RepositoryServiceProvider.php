@@ -20,6 +20,7 @@ class RepositoryServiceProvider extends ServiceProvider
         Repositories\ClientInviteRepositoryInterface::class    =>   Repositories\Eloquent\ClientInviteRepository::class,
         Repositories\CartRepositoryInterface::class            =>   Repositories\Eloquent\CartRepository::class,
         Repositories\OrderRepositoryInterface::class           =>   Repositories\Eloquent\OrderRepository::class,
-        Repositories\ClientRepositoryInterface::class           =>   Repositories\Eloquent\ClientRepository::class,
+        Repositories\ClientRepositoryInterface::class          =>   Repositories\Eloquent\ClientRepository::class,
+        Repositories\ManagerRepositoryInterface::class         =>   Repositories\Eloquent\ManagerRepository::class,
     ];
 }

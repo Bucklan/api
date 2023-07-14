@@ -55,4 +55,17 @@ class UserRepository extends BaseRepository implements UserRepInterface
             ->first();
     }
 
+    public function getQueryByRoles(array $roles,
+                                    array $columns = ['*'],
+                                    array $relations = [],
+                                    array $relation_count = [])
+    {
+        return $this->model
+            ->query()
+            ->role($roles)
+            ->select($columns)
+            ->with($relations)
+            ->withCount($relation_count);
+    }
+
 }

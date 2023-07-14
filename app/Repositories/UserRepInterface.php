@@ -20,4 +20,9 @@ interface UserRepInterface extends EloquentRepositoryInterface
         array $relations = [],
         array $relations_count = []
     ): ?User;
+
+    public function getQueryByRoles(array $roles,
+                                    array $columns = ['*'],
+                                    array $relations = [],
+                                    array $relation_count = []);
 }
