@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin\User\Dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
+use App\Services\Admin\Contracts\GetListUsers;
 
 class DashboardController extends Controller
 {
-    public function index(): JsonResponse
+    public function index()
     {
-        return response()->json();
+        $response = app(GetListUsers::class)->execute();
+        return response()->json($response);
     }
 }

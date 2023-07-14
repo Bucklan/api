@@ -10,6 +10,7 @@ use App\Services\Admin\Resource\City\EditResource;
 use http\Env\Request;
 use Illuminate\Http\JsonResponse;
 use App\Services\Admin\Contracts as Contracts;
+use Illuminate\Http\Response;
 
 class CityController extends Controller
 {
@@ -34,11 +35,13 @@ class CityController extends Controller
         return app(Contracts\GetDatatableOfCities::class)->execute();
     }
 
-    public function store(StoreRequest $request): void
+    public function store(StoreRequest $request): JsonResponse
     {
 
         app(Contracts\CreateCity::class)
             ->execute($request->get('name'));
+
+        return response()->json(Response::HTTP_CREATED);
     }
 
     public function edit(City $city): EditResource

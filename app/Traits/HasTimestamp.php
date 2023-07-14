@@ -4,7 +4,6 @@ namespace App\Traits;
 
 use App\Services\Formatter\DateFormatter;
 use Date;
-
 trait HasTimestamp
 {
     public function getCreatedAtDatetime(): ?string

@@ -16,5 +16,10 @@ class ActionServiceProvider extends ServiceProvider
         Admin\Contracts\GetUserCity::class          => Admin\Actions\City\GetUserCityAction::class,
         Admin\Contracts\CreateCity::class           => Admin\Actions\City\CreateAction::class,
         Admin\Contracts\GetDatatableOfCities::class => Admin\Actions\City\GetDatatableAction::class,
+        Admin\Contracts\GetListUsers::class         => Admin\Actions\Dashboard\GetListUsersAction::class,
+        Admin\Contracts\GetDataTableClients::class  => Admin\Actions\Client\GetDataTable::class,
+        Admin\Contracts\UpdateCity::class  => Admin\Actions\City\UpdateAction::class,
+        Admin\Contracts\DeleteCity::class  => Admin\Actions\City\DeleteAction::class,
+
     ];
 }

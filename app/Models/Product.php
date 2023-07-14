@@ -5,15 +5,19 @@ namespace App\Models;
 use App\Traits\Filterable;
 use App\Traits\HasMedia;
 use App\Traits\Product\HasScopes;
+use App\Traits\Translatable;
+use Closure;
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Kirschbaum\PowerJoins\PowerJoins;
+use Znck\Eloquent\Relations\BelongsToThrough;
+use Znck\Eloquent\Traits\BelongsToThrough as BelongsToThroughTrait;
 
 /**
  * App\Models\Product
@@ -24,22 +28,25 @@ use Kirschbaum\PowerJoins\PowerJoins;
  * @property int $quantity Количество
  * @property int $type
  * @property int|null $category_id
- * @property string|null $deleted_at
+ * @property Carbon|null $deleted_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
- * @property-read  Category|null $category
- * @property-read  City|null $city
- * @property-read  File|null $file
- * @property-read  Collection|File[] $files
- * @property-read  int|null $files_count
- * @property-read  Collection|Genre[] $genres
- * @property-read  int|null $genres_count
- * @property-read  array $translations
- * @property-read  Collection|ProductPrice[] $prices
- * @property-read  int|null $prices_count
- * @property-read  Collection|Product[] $subproducts
- * @property-read  int|null $subproducts_count
+ * @property-read Category|null $category
+ * @property-read File|null $file
+ * @property-read Collection|File[] $files
+ * @property-read int|null $files_count
+ * @property-read Collection|Genre[] $genres
+ * @property-read int|null $genres_count
+ * @property-read int|null $parent_products_count
+ * @property-read array $translations
+ * @property-read Collection|OrderProduct[] $orderProducts
+ * @property-read int|null $order_products_count
+ * @property-read Collection|Product[] $parentProducts
+ * @property-read Collection|ProductPrice[] $prices
+ * @property-read int|null $prices_count
+ * @property-read Collection|Product[] $subproducts
+ * @property-read int|null $subproducts_count
  *
  * @method static Builder|Product filterBy($filters)
  * @method static Builder|Product hasNestedUsingJoins($relations, $operator = '>=', $count = 1, $boolean = 'and', ?Closure $callback = null)
@@ -52,6 +59,7 @@ use Kirschbaum\PowerJoins\PowerJoins;
  * @method static Builder|Product leftJoinRelationshipUsingAlias($relationName, $callback = null, bool $disableExtraConditions = false)
  * @method static Builder|Product newModelQuery()
  * @method static Builder|Product newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
  * @method static Builder|Product orderByLeftPowerJoins($sort, $direction = 'asc')
  * @method static Builder|Product orderByLeftPowerJoinsAvg($sort, $direction = 'asc')
  * @method static Builder|Product orderByLeftPowerJoinsCount($sort, $direction = 'asc')
@@ -86,30 +94,41 @@ use Kirschbaum\PowerJoins\PowerJoins;
  * @method static Builder|Product whereQuantity($value)
  * @method static Builder|Product whereType($value)
  * @method static Builder|Product whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Product withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Product withoutTrashed()
  *
  * @mixin Eloquent
  */
-
-class Product extends Model
+class Product extends BaseModel
 {
     use PowerJoins,
-        HasFactory,
         Filterable,
+        Translatable,
         HasMedia,
-        HasScopes;
+        HasScopes,
+        SoftDeletes,
+        BelongsToThroughTrait;
 
-    protected $fillable = [
-        'name',
+    protected array $translatable = [
         'description',
-        'quantity',
-        'category_id',
-        'type',
+    ];
+
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
     ];
 
     public function getImage(): string
     {
-        return $this->file ? $this->file->getFile() : asset('default_image.png');
+        return $this->file->getFile() ?? asset('default_image.png');
     }
+
+    public function city(): BelongsToThrough
+    {
+        return $this->belongsToThrough(City::class, Category::class);
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -117,18 +136,26 @@ class Product extends Model
 
     public function genres(): BelongsToMany
     {
-        return $this->belongsToMany(Genre::class, 'genre_product');
+        return $this->belongsToMany(Genre::class);
+    }
+
+    public function prices(): HasMany
+    {
+        return $this->hasMany(ProductPrice::class);
     }
 
     public function subproducts(): BelongsToMany
     {
-        return $this->belongsToMany(self::class,
-            'product_items',
-            'product_id',
-            'item_id');
+        return $this->belongsToMany(self::class, 'product_items', 'product_id', 'item_id');
     }
-    public function prices(): HasMany
+
+    public function orderProducts(): HasMany
     {
-        return $this->hasMany(ProductPrice::class);
+        return $this->hasMany(OrderProduct::class);
+    }
+
+    public function parentProducts(): BelongsToMany
+    {
+        return $this->belongsToMany(self::class, 'product_items', 'item_id', 'product_id');
     }
 }

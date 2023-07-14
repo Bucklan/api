@@ -1,1 +1,1 @@
-<?phpnamespace App\Services\Admin\Contracts;interface DeleteCity{public function execute(City $city): void;}
+<?phpnamespace App\Services\Admin\Contracts;use App\Models\City;interface DeleteCity{    public function execute(City $city): void;}

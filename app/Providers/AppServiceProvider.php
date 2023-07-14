@@ -12,6 +12,9 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
+    public array $bindings = [
+        FormatterService\DateFormatter::class => FormatterService\RussianDateFormatter::class,
+    ];
     public function register(): void
     {
         //

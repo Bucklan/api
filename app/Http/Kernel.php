@@ -55,7 +55,6 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
-        'splade' => \ProtoneMedia\Splade\Http\SpladeMiddleware::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -67,11 +66,5 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'city_checker' => \App\Http\Middleware\CityChecker::class,
-    ];
-
-    protected $routeMiddleware = [
-
-        'splade' => \ProtoneMedia\Splade\Http\SpladeMiddleware::class,
-
     ];
 }

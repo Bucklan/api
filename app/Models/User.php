@@ -3,9 +3,11 @@
 namespace App\Models;
 
 
+use App\Traits\Filterable;
 use App\Traits\HasDeviceTokens;
 use App\Traits\HasTimestamp;
 use App\Traits\Verifiable;
+use Eloquent;
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -29,7 +31,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $phone
  * @property string $name Имя
  * @property string $surname Фамилия
- * @property email $email email
+ * @property string $email email
  * @property string $password password
  * @property int|null $gender Пол
  * @property int|null $birth_day Год рождения
@@ -43,10 +45,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
  *
- * @property-read Collection|UserAddress[] $addresses
- * @property-read int|null $addresses_count
- * @property-read Collection|UserBonus[] $bonus
- * @property-read int|null $bonus_count
  * @property-read Collection|Cart[] $carts
  * @property-read int|null $carts_count
  * @property-read Collection|Verification[] $current_verification
@@ -97,7 +95,8 @@ class User extends Authenticatable implements Authorizable
         Notifiable,
         Verifiable,
         HasDeviceTokens,
-        HasTimestamp;
+        HasTimestamp,
+        Filterable;
 
     protected $fillable = [
         'name',

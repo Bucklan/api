@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,9 +14,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained()->cascadeOnDelete();
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
-            $table->string('street')->comment('Улица');
-            $table->string('building')->nullable()->comment('Дом/корпус');
-            $table->string('apartment')->nullable()->comment('Кв/офис');
+            $table->string('street');
+            $table->string('building')->nullable();
+            $table->string('apartment')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('client_address');
+        Schema::dropIfExists('client_addresses');
     }
 };

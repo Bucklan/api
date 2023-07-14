@@ -24,7 +24,7 @@ Route::prefix('admin')->group(function () {
 //        include('user/couriers.php');
 //        include('user/settings.php');
 //        include('user/deliveries.php');
-//        include('user/clients.php');
+        include('user/clients.php');
 //        include('user/help-sections.php');
 //        include('user/promocodes.php');
 

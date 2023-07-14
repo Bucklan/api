@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Traits\Filterable;
+use App\Traits\Genre\HasMutators;
 use App\Traits\HasMedia;
+use App\Traits\Translatable;
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
@@ -18,10 +19,14 @@ use Illuminate\Support\Carbon;
  * @property array $name
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @property-read File|null $file
  * @property-read Collection|File[] $files
  * @property-read int|null $files_count
+ * @property-read int|null $products_count
  * @property-read array $translations
+ * @property-read Collection|Product[] $products
+ *
  * @method static Builder|Genre filterBy($filters)
  * @method static Builder|Genre newModelQuery()
  * @method static Builder|Genre newQuery()
@@ -30,23 +35,32 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Genre whereId($value)
  * @method static Builder|Genre whereName($value)
  * @method static Builder|Genre whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
-class Genre extends Model
+class Genre extends BaseModel
 {
-    use HasFactory,
-        HasMedia,
-        Filterable;
+    use Filterable,
+        Translatable,
+        HasMedia;
 
-    protected $fillable = ['name'];
+    protected array $translatable = [
+        'name'
+    ];
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
 
-    public function product(): BelongsToMany
-    {
-        return $this->belongsToMany(Product::class, 'genre_product');
-    }
     public function getImage(): string
     {
-        return $this->file ? $this->file->getFile() : asset('default_image.png');
+        return $this->file->getFile() ?? asset('default_image.png');
+    }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

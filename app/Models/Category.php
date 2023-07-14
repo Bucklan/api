@@ -2,30 +2,76 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Category\HasMutators;
+use App\Traits\Category\HasScopes;
+use App\Traits\Filterable;
+use App\Traits\HasMedia;
+use App\Traits\Translatable;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
-class Category extends Model
+/**
+ * App\Models\Category
+ *
+ * @property int $id
+ * @property int $city_id
+ * @property array $name
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ *
+ * @property-read City $city
+ * @property-read File|null $file
+ * @property-read Collection|File[] $files
+ * @property-read int|null $files_count
+ * @property-read array $translations
+ * @property-read Collection|Product[] $products
+ * @property-read int|null $products_count
+ *
+ * @method static Builder|Category filterBy($filters)
+ * @method static Builder|Category newModelQuery()
+ * @method static Builder|Category newQuery()
+ * @method static Builder|Category query()
+ * @method static Builder|Category whereCategoryInCity(string $city_id)
+ * @method static Builder|Category whereCityId($value)
+ * @method static Builder|Category whereCreatedAt($value)
+ * @method static Builder|Category whereId($value)
+ * @method static Builder|Category whereName($value)
+ * @method static Builder|Category whereUpdatedAt($value)
+ *
+ * @mixin Eloquent
+ */
+class Category extends BaseModel
 {
-    use HasFactory;
+    use Filterable,
+        Translatable,
+        HasMedia;
 
-    protected $fillable = ['id', 'city_id', 'name'];
+    protected array $translatable = [
+        'name'
+    ];
 
-    function City(): BelongsTo
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
+
+    public function getImage(): string
     {
-        return $this->belongsTo(City::class);
+        return $this->file->getFile() ?? asset('default_image.png');
     }
 
-    function products(): HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
 
-    public function getImage(): string
+    public function city(): BelongsTo
     {
-        return $this->file ? $this->file->getFile() : asset('default.png');
+        return $this->belongsTo(City::class);
     }
 }

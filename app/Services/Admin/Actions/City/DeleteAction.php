@@ -1,1 +1,1 @@
-<?phpnamespace App\Services\Admin\Actions\City;class DeleteAction{    public function execute(City $city): void    {        $city->delete();    }}
+<?phpnamespace App\Services\Admin\Actions\City;use App\Models\City;use App\Services\Admin\Contracts\DeleteCity;class DeleteAction implements DeleteCity{    public function execute(City $city): void    {        $city->delete();    }}
