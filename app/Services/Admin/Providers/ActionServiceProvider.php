@@ -23,6 +23,7 @@ class ActionServiceProvider extends ServiceProvider
         Admin\Contracts\BlockClient::class          => Admin\Actions\Client\BlockAction::class,
         Admin\Contracts\UnBlockClient::class        => Admin\Actions\Client\UnBlockAction::class,
         Admin\Contracts\GetDataTableManagers::class => Admin\Actions\Manager\GetDataTableAction::class,
+        Admin\Contracts\GetDatatableCouriers::class => Admin\Actions\Courier\GetDatatableAction::class,
 
     ];
 }

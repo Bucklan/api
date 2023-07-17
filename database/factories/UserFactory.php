@@ -21,7 +21,7 @@ class UserFactory extends Factory
 
     public function developer(): Factory
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'name' => 'Разработчик',
                 'email' => 'developer@kosmos.kz',
@@ -34,7 +34,7 @@ class UserFactory extends Factory
 
     public function admin(): Factory
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'name' => 'Супер админ',
                 'email' => 'admin@kosmos.kz',

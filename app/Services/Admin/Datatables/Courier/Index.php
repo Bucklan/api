@@ -18,19 +18,19 @@ class Index extends Datatable implements DatatableContract
     {
 
         return datatables()->of($this->query)
-            ->addColumn('info', function (User $manager) {
+            ->addColumn('info', function (User $courier) {
                 return [
-                    'avatar' => $manager->getAvatar(),
-                    'name' => $manager->name
+                    'avatar' => $courier->getAvatar(),
+                    'name' => $courier->name
                 ];
             })
-            ->addColumn('email', function (User $manager) {
-                return $manager->email;
+            ->addColumn('email', function (User $courier) {
+                return $courier->email;
             })
-            ->addColumn('selected_permissions', function (User $manager) {
+            ->addColumn('selected_permissions', function (User $courier) {
                 $array = [];
 
-                foreach ($manager->permissions as $permission) {
+                foreach ($courier->permissions as $permission) {
                     $array[] = [
                         'name' => $permission->name,
                         'description' => Enums\User\Permission::getDescription($permission->name)
@@ -39,13 +39,13 @@ class Index extends Datatable implements DatatableContract
 
                 return $array;
             })
-            ->addColumn('created_at_datetime', function (User $manager) {
-                return $manager->getCreatedAtDatetime();
+            ->addColumn('created_at_datetime', function (User $courier) {
+                return $courier->getCreatedAtDatetime();
             })
-            ->addColumn('permissions', function (User $manager){
+            ->addColumn('permissions', function (User $courier){
                 return [
-                    'can_update' => $manager->hasRole(Enums\User\Role::COURIER),
-                    'can_block' => !$manager->isLoginBlocked(),
+                    'can_update' => $courier->hasRole(Enums\User\Role::COURIER),
+                    'can_block' => !$courier->isLoginBlocked(),
                 ];
             })
             ->filter(function ($query) {

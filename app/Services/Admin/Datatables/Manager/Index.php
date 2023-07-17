@@ -28,16 +28,16 @@ class Index extends Datatable implements DatatableContract
                 return $manager->email;
             })
             ->addColumn('selected_permissions', function (User $manager) {
-                $array = [];
+                $permissions = [];
 
                 foreach ($manager->permissions as $permission) {
-                    $array[] = [
+                    $permissions[] = [
                         'name' => $permission->name,
                         'description' => Enums\User\Permission::getDescription($permission->name)
                     ];
                 }
 
-                return $array;
+                return $permissions;
             })
             ->addColumn('created_at_datetime', function (User $manager) {
                 return $manager->getCreatedAtDatetime();

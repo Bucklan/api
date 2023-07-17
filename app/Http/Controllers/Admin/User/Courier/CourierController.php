@@ -7,10 +7,13 @@ use App\Services\Admin\Contracts\GetDatatableCouriers;
 
 class CourierController extends Controller
 {
-public function datatable(){
-app(GetDatatableCouriers::class)->execute();
-}
-public function checkAccess(){
+    public function datatable()
+    {
+       return app(GetDatatableCouriers::class)->execute();
+    }
 
-}
+    public function checkAccess()
+    {
+
+    }
 }

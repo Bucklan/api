@@ -5,6 +5,7 @@ namespace App\Models;
 
 use App\Traits\Filterable;
 use App\Traits\HasDeviceTokens;
+use App\Traits\HasMedia;
 use App\Traits\HasTimestamp;
 use App\Traits\Verifiable;
 use Eloquent;
@@ -102,7 +103,8 @@ class User extends Authenticatable implements Authorizable
         Verifiable,
         HasDeviceTokens,
         HasTimestamp,
-        Filterable;
+        Filterable,
+        HasMedia;
 
     protected $fillable = [
         'name',
